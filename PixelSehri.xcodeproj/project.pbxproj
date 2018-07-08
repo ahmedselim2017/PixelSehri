@@ -13,6 +13,7 @@
 		9334871720F00BE100613240 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9334871520F00BE100613240 /* Main.storyboard */; };
 		9334871920F00BE600613240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9334871820F00BE600613240 /* Assets.xcassets */; };
 		9334871C20F00BE600613240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9334871A20F00BE600613240 /* LaunchScreen.storyboard */; };
+		93EC6F9920F2B7B50035B2D0 /* HaritaPini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		9334871820F00BE600613240 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9334871B20F00BE600613240 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9334871D20F00BE600613240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaritaPini.swift; sourceTree = "<group>"; };
 		DC7E34560A5385F9EE353C4D /* Pods_PixelSehri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixelSehri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,7 +72,8 @@
 		9334871020F00BE100613240 /* PixelSehri */ = {
 			isa = PBXGroup;
 			children = (
-				9334872620F00C2F00613240 /* Araçlar */,
+				93EC6F9720F2B7970035B2D0 /* Gorunumler */,
+				9334872620F00C2F00613240 /* Araçlar */,
 				9334872520F00C2300613240 /* Eklentiler */,
 				9334872420F00C1C00613240 /* Model */,
 				9334872320F00C0A00613240 /* Controller */,
@@ -105,12 +108,20 @@
 			path = Eklentiler;
 			sourceTree = "<group>";
 		};
-		9334872620F00C2F00613240 /* Araçlar */ = {
+		9334872620F00C2F00613240 /* Araçlar */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "Araçlar";
 			path = "Araçlar";
+			sourceTree = "<group>";
+		};
+		93EC6F9720F2B7970035B2D0 /* Gorunumler */ = {
+			isa = PBXGroup;
+			children = (
+				93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */,
+			);
+			path = Gorunumler;
 			sourceTree = "<group>";
 		};
 		A566A72F88FA9E071BD237FF /* Frameworks */ = {
@@ -237,6 +248,7 @@
 			files = (
 				9334871420F00BE100613240 /* HaritaVC.swift in Sources */,
 				9334871220F00BE100613240 /* AppDelegate.swift in Sources */,
+				93EC6F9920F2B7B50035B2D0 /* HaritaPini.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
