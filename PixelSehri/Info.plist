@@ -39,5 +39,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Bu Uygulama Fotoğrafları Flickr&apos;den Almak İçin Loskasyon Bilgilerinizi İstiyor</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Bu Uygulama Fotoğrafları Flickr&apos;den Almak İçin Loskasyon Bilgilerinizi İstiyor</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Bu Uygulama Fotoğrafları Flickr&apos;den Almak İçin Loskasyon Bilgilerinizi İstiyor</string>
 </dict>
 </plist>
