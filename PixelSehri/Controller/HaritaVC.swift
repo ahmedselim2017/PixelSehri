@@ -46,6 +46,16 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
 
 extension HaritaVC: MKMapViewDelegate{
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation{
+            return nil;
+        }
+        var pinAnnotatin=MKPinAnnotationView(annotation: annotation, reuseIdentifier: "haritaPini");
+        pinAnnotatin.pinTintColor=#colorLiteral(red: 0.9771530032, green: 0.7062081099, blue: 0.1748393774, alpha: 1);
+        pinAnnotatin.animatesDrop=true;
+        return pinAnnotatin;
+    }
+    
     @objc func pinBirak(sender:UITapGestureRecognizer){
         pinleriKalidr();
         let dokunulanNokta=sender.location(in: haritaGoruntuleyicisi);
