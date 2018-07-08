@@ -8,14 +8,22 @@
 
 import UIKit
 import Alamofire
+import MapKit
 
 class HaritaVC: UIViewController {
 
+    @IBOutlet weak var haritaGoruntuleyicisi: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        haritaGoruntuleyicisi.delegate=self;
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func haritayiOrtalaBasildi(_ sender: Any) {
+    }
+    
 }
 
+extension HaritaVC: MKMapViewDelegate{
+    
+}
