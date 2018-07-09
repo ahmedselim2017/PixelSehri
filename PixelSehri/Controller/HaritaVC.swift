@@ -31,7 +31,7 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
     var lblBeklemeSeviyesi:UILabel?;
     
     var resimUrlDizisi=[String]();
-    
+    var resimDizisi=[UIImage]();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +85,43 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         }
     }
     
+    func resimleriGetir(handler:@escaping(_ durum:Bool)->()){
+        resimDizisi=[];
+        
+        for url in resimUrlDizisi{
+            Alamofire.request(url).responseImage { (cevap) in
+                
+                if cevap.error != nil {
+                    debugPrint(cevap.error);
+                    handler(false);
+                    return;
+                }
+                
+                guard let resim=cevap.result.value else{handler(false);return;}
+                self.resimDizisi.append(resim);
+                
+                self.lblBeklemeSeviyesi?.text="\(self.resimDizisi.count)/40 Resim İndirildi";
+                
+                if self.resimDizisi.count == self.resimUrlDizisi.count{
+                    handler(true);
+                    return;
+                }
+            }
+        }
+        
+        
+        
+    }
+    
+    func sezonlariBitir(){
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sezonVeri, yuklenenVeri, indirilenVeri) in
+            sezonVeri.forEach({$0.cancel()});
+            yuklenenVeri.forEach({$0.cancel()});
+            indirilenVeri .forEach({$0.cancel()});
+
+        }
+    }
+    
     func fotografViewAnimasyonu(){
         self.ViewFotoğraflar.alpha=0;
         self.btnOrtalaGizli.alpha=0;
@@ -100,6 +137,7 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
     }
     
     func fotografViewGeriAnimasyonu(){
+        sezonlariBitir();
         UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
             self.ViewFotoğraflar.alpha = 0
             self.btnOrtalaGizli.alpha=0;
@@ -134,10 +172,9 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
     func lblBeklemeSeviyesiEkle(){
         lblBeklemeSeviyesi=UILabel();
         lblBeklemeSeviyesi?.frame=CGRect(x: (ekranBoyutu.width/2)-100, y: 180, width: 200, height: 40);
-        lblBeklemeSeviyesi?.font=UIFont(name: "Avenir next", size: 18);
+        lblBeklemeSeviyesi?.font=UIFont(name: "Avenir next", size: 17);
         lblBeklemeSeviyesi?.textColor=#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1);
         lblBeklemeSeviyesi?.textAlignment = .center;
-        lblBeklemeSeviyesi?.text="0/40 Fotoğraf Yüklendi";
         koleksiyonGoruntuleyicisi?.addSubview(lblBeklemeSeviyesi!);
     }
     
@@ -180,6 +217,7 @@ extension HaritaVC: MKMapViewDelegate{
     }
     
     @objc func pinBirak(sender:UITapGestureRecognizer){
+        sezonlariBitir();
         pinleriKalidr();
         fotografViewAnimasyonu();
         lblBeklemeSeviyesiKaldir();
@@ -194,7 +232,15 @@ extension HaritaVC: MKMapViewDelegate{
         haritaGoruntuleyicisi.addAnnotation(annotation);
 
         urlleriGetir(annotation: annotation) { (durum) in
-            print(self.resimUrlDizisi);
+            if durum{
+                self.resimleriGetir(handler: { (durum) in
+                    if durum{
+                        self.bekleticiKaldir();
+                        self.lblBeklemeSeviyesiKaldir();
+                        self.koleksiyonGoruntuleyicisi?.reloadData();
+                    }
+                })
+            }
         }
         
         let koordinatBolgesi=MKCoordinateRegion(center: dokunulanKoordinat, latitudinalMeters: bolgeRadyus*2, longitudinalMeters: bolgeRadyus*2);
