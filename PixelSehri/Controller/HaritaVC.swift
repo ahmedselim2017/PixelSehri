@@ -21,6 +21,8 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
     let yetkiDurumu=CLLocationManager.authorizationStatus();
     let bolgeRadyus:Double=1000;
     
+    var koleksiyonGoruntuleyicisi:UICollectionView?;
+    var flowLayout=UICollectionViewFlowLayout();
     var ekranBoyutu=UIScreen.main.bounds;
     var bekletici:UIActivityIndicatorView?;
     var lblBeklemeSeviyesi:UILabel?;
@@ -31,6 +33,16 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         lokasyonDuzenleyicisi.delegate=self;
         haritaGoruntuleyicisi.delegate=self;
         ciftTiklamaEkle();
+        
+        koleksiyonGoruntuleyicisi=UICollectionView(frame: view.bounds , collectionViewLayout: flowLayout);
+        koleksiyonGoruntuleyicisi?.register(FotografHucresi.self, forCellWithReuseIdentifier: "fotografHucresi");
+        koleksiyonGoruntuleyicisi?.delegate=self;
+        koleksiyonGoruntuleyicisi?.dataSource=self;
+        koleksiyonGoruntuleyicisi?.backgroundColor=#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1);
+        
+        ViewFotoğraflar.addSubview(koleksiyonGoruntuleyicisi!);
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -76,7 +88,32 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         bekletici?.activityIndicatorViewStyle = .whiteLarge;
         bekletici?.color=#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1);
         bekletici?.startAnimating();
-        ViewFotoğraflar.addSubview(bekletici!);
+        koleksiyonGoruntuleyicisi?.addSubview(bekletici!);
+    }
+    
+    func bekleticiKaldir(){
+        if bekletici != nil {
+            bekletici?.removeFromSuperview();
+            bekletici=nil;
+        }
+        
+    }
+    
+    func lblBeklemeSeviyesiEkle(){
+        lblBeklemeSeviyesi=UILabel();
+        lblBeklemeSeviyesi?.frame=CGRect(x: (ekranBoyutu.width/2)-100, y: 180, width: 200, height: 40);
+        lblBeklemeSeviyesi?.font=UIFont(name: "Avenir next", size: 18);
+        lblBeklemeSeviyesi?.textColor=#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1);
+        lblBeklemeSeviyesi?.textAlignment = .center;
+        lblBeklemeSeviyesi?.text="0/40 Fotoğraf Yüklendi";
+        koleksiyonGoruntuleyicisi?.addSubview(lblBeklemeSeviyesi!);
+    }
+    
+    func lblBeklemeSeviyesiKaldir(){
+        if lblBeklemeSeviyesi != nil{
+            lblBeklemeSeviyesi?.removeFromSuperview();
+            lblBeklemeSeviyesi=nil;
+        }
     }
     
     @IBAction func haritayiOrtalaBasildi(_ sender: Any) {
@@ -113,6 +150,9 @@ extension HaritaVC: MKMapViewDelegate{
     @objc func pinBirak(sender:UITapGestureRecognizer){
         pinleriKalidr();
         fotografViewAnimasyonu();
+        lblBeklemeSeviyesiKaldir();
+        lblBeklemeSeviyesiEkle();
+        bekleticiKaldir();
         bekleticiEkle();
         fotografViewGeriyeAnimasyon();
         let dokunulanNokta=sender.location(in: haritaGoruntuleyicisi);
@@ -156,4 +196,18 @@ extension HaritaVC: CLLocationManagerDelegate{
         haritayiLokasyonaGoreAyarla();
     }
     
+}
+
+
+extension HaritaVC:UICollectionViewDelegate,UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4;
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let hucre=collectionView.dequeueReusableCell(withReuseIdentifier: "fotografHucresi", for: indexPath);
+        return hucre;
+    }
 }
