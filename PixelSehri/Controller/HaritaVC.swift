@@ -161,7 +161,11 @@ extension HaritaVC: MKMapViewDelegate{
         let annotation=HaritaPini(coordinate: dokunulanKoordinat, identifier: "haritaPini");
         haritaGoruntuleyicisi.addAnnotation(annotation);
         
+        
+
+        
         let koordinatBolgesi=MKCoordinateRegion(center: dokunulanKoordinat, latitudinalMeters: bolgeRadyus*2, longitudinalMeters: bolgeRadyus*2);
+        
         
         haritaGoruntuleyicisi.setRegion(koordinatBolgesi, animated: true);
         

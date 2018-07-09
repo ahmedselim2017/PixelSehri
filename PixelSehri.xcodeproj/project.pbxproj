@@ -15,6 +15,7 @@
 		9334871C20F00BE600613240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9334871A20F00BE600613240 /* LaunchScreen.storyboard */; };
 		93EC6F9920F2B7B50035B2D0 /* HaritaPini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */; };
 		93F147B220F3FC5E0030AA1E /* FotografHucresi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F147B120F3FC5E0030AA1E /* FotografHucresi.swift */; };
+		93F147B420F403240030AA1E /* Sabitler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F147B320F403240030AA1E /* Sabitler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9334871D20F00BE600613240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaritaPini.swift; sourceTree = "<group>"; };
 		93F147B120F3FC5E0030AA1E /* FotografHucresi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotografHucresi.swift; sourceTree = "<group>"; };
+		93F147B320F403240030AA1E /* Sabitler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabitler.swift; sourceTree = "<group>"; };
 		DC7E34560A5385F9EE353C4D /* Pods_PixelSehri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixelSehri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 		9334872620F00C2F00613240 /* Araçlar */ = {
 			isa = PBXGroup;
 			children = (
+				93F147B320F403240030AA1E /* Sabitler.swift */,
 			);
 			name = "Araçlar";
 			path = "Araçlar";
@@ -252,6 +255,7 @@
 				9334871420F00BE100613240 /* HaritaVC.swift in Sources */,
 				9334871220F00BE100613240 /* AppDelegate.swift in Sources */,
 				93EC6F9920F2B7B50035B2D0 /* HaritaPini.swift in Sources */,
+				93F147B420F403240030AA1E /* Sabitler.swift in Sources */,
 				93F147B220F3FC5E0030AA1E /* FotografHucresi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
