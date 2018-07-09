@@ -6,9 +6,12 @@
 //  Copyright © 2018 Ahmed Selim Üzüm. All rights reserved.
 //
 
-import UIKit
-import CoreLocation
-import MapKit
+import UIKit;
+import CoreLocation;
+import MapKit;
+import Alamofire;
+import AlamofireImage;
+
 
 class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
 
@@ -26,6 +29,9 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
     var ekranBoyutu=UIScreen.main.bounds;
     var bekletici:UIActivityIndicatorView?;
     var lblBeklemeSeviyesi:UILabel?;
+    
+    var resimUrlDizisi=[String]();
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +57,32 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         ciftTiklama.numberOfTapsRequired=2;
         ciftTiklama.delegate=self;
         haritaGoruntuleyicisi.addGestureRecognizer(ciftTiklama);
+    }
+    
+    func urlleriGetir(annotation:HaritaPini, handler:@escaping (_ durum:Bool)->()) {
+        resimUrlDizisi=[];
+        Alamofire.request(flickrUrl(apiAnahtari: API_Anahtari, annotation: annotation, fotografSayisi: 40)).responseJSON { (cevap) in
+            
+            if cevap.error != nil {
+                debugPrint("Hata Var!! 66. Satır");
+                handler(false);
+                return;
+            }
+            
+            
+            guard let json=cevap.result.value as? Dictionary<String,AnyObject> else {handler(false);return;}
+            let fotograflarJSON=json["photos"] as! Dictionary<String,AnyObject>;
+            let fotograflarJSONDizi=fotograflarJSON["photo"] as! [Dictionary<String,AnyObject>];
+            var fotografUrl:String;
+            for fotograf in fotograflarJSONDizi{
+                fotografUrl="https://farm\(fotograf["farm"]!).staticflickr.com/\(fotograf["server"]!)/\(fotograf["id"]!)_\(fotograf["secret"]!)_h_d.jpg";
+                self.resimUrlDizisi.append(fotografUrl);
+                fotografUrl="";
+            }
+            
+            handler(true);
+            
+        }
     }
     
     func fotografViewAnimasyonu(){
@@ -160,9 +192,10 @@ extension HaritaVC: MKMapViewDelegate{
         
         let annotation=HaritaPini(coordinate: dokunulanKoordinat, identifier: "haritaPini");
         haritaGoruntuleyicisi.addAnnotation(annotation);
-        
-        
 
+        urlleriGetir(annotation: annotation) { (durum) in
+            print(self.resimUrlDizisi);
+        }
         
         let koordinatBolgesi=MKCoordinateRegion(center: dokunulanKoordinat, latitudinalMeters: bolgeRadyus*2, longitudinalMeters: bolgeRadyus*2);
         
