@@ -12,10 +12,18 @@ import MapKit
 
 class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
 
+    @IBOutlet weak var ViewFotoğraflar: UIView!
+
     @IBOutlet weak var haritaGoruntuleyicisi: MKMapView!
+    @IBOutlet weak var btnOrtalaGizli: UIButton!
+    @IBOutlet weak var btnOrtala: UIView!
     var lokasyonDuzenleyicisi=CLLocationManager();
     let yetkiDurumu=CLLocationManager.authorizationStatus();
     let bolgeRadyus:Double=1000;
+    
+    var ekranBoyutu=UIScreen.main.bounds;
+    var bekletici:UIActivityIndicatorView?;
+    var lblBeklemeSeviyesi:UILabel?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +41,43 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         haritaGoruntuleyicisi.addGestureRecognizer(ciftTiklama);
     }
     
+    func fotografViewAnimasyonu(){
+        self.ViewFotoğraflar.alpha=0;
+        self.btnOrtalaGizli.alpha=0;
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+            self.btnOrtalaGizli.isHidden=false;
+            self.btnOrtalaGizli.alpha=1;
+            self.ViewFotoğraflar.isHidden = false;
+            self.ViewFotoğraflar.alpha=1;
+        }, completion: { _ in
+            
+        })
+        self.loadViewIfNeeded();
+    }
     
+    func fotografViewGeriAnimasyonu(){
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.ViewFotoğraflar.alpha = 0
+            self.btnOrtalaGizli.alpha=0;
+        }, completion: { _ in
+            self.btnOrtalaGizli.isHidden=true;
+            self.ViewFotoğraflar.isHidden = true
+        })
+        self.loadViewIfNeeded();
+    }
     
+    @objc func deneme(sender:UISwipeGestureRecognizer){
+        fotografViewGeriAnimasyonu();
+    }
+    
+    func bekleticiEkle(){
+        bekletici=UIActivityIndicatorView();
+        bekletici?.center=CGPoint(x: (ekranBoyutu.width/2)-((bekletici?.frame.width)!/2), y:150);
+        bekletici?.activityIndicatorViewStyle = .whiteLarge;
+        bekletici?.color=#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1);
+        bekletici?.startAnimating();
+        ViewFotoğraflar.addSubview(bekletici!);
+    }
     
     @IBAction func haritayiOrtalaBasildi(_ sender: Any) {
         if yetkiDurumu == .authorizedAlways || yetkiDurumu == .authorizedWhenInUse{
@@ -42,15 +85,26 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         }
     }
     
+    @objc func fotografViewGeriyeAnimasyon(){
+        let geri=UISwipeGestureRecognizer(target: self, action: #selector(deneme(sender:)));
+        geri.direction = .down;
+        ViewFotoğraflar.addGestureRecognizer(geri);
+        
+        
+    }
+    
 }
 
 extension HaritaVC: MKMapViewDelegate{
+    
+    
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation{
             return nil;
         }
-        var pinAnnotatin=MKPinAnnotationView(annotation: annotation, reuseIdentifier: "haritaPini");
+        let pinAnnotatin=MKPinAnnotationView(annotation: annotation, reuseIdentifier: "haritaPini");
         pinAnnotatin.pinTintColor=#colorLiteral(red: 0.9771530032, green: 0.7062081099, blue: 0.1748393774, alpha: 1);
         pinAnnotatin.animatesDrop=true;
         return pinAnnotatin;
@@ -58,6 +112,9 @@ extension HaritaVC: MKMapViewDelegate{
     
     @objc func pinBirak(sender:UITapGestureRecognizer){
         pinleriKalidr();
+        fotografViewAnimasyonu();
+        bekleticiEkle();
+        fotografViewGeriyeAnimasyon();
         let dokunulanNokta=sender.location(in: haritaGoruntuleyicisi);
         let dokunulanKoordinat=haritaGoruntuleyicisi.convert(dokunulanNokta, toCoordinateFrom: haritaGoruntuleyicisi);
         

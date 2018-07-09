@@ -52,30 +52,48 @@
                                     <action selector="haritayiOrtalaBasildi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zu-ba-0Ib"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xN-vu-MaN">
-                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xN-vu-MaN">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="nIk-mq-XhX"/>
+                                </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyD-RM-jLP">
+                                <rect key="frame" x="309" y="297" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5CB-EU-wwe"/>
+                                    <constraint firstAttribute="width" constant="50" id="nss-kM-5Ro"/>
+                                </constraints>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="haritayiOrtalaBasildi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SNB-Yg-syD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8xN-vu-MaN" secondAttribute="bottom" id="Fbu-Qf-RmE"/>
-                            <constraint firstAttribute="trailing" secondItem="8xN-vu-MaN" secondAttribute="trailing" id="G1K-oz-YWn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8xN-vu-MaN" secondAttribute="bottom" id="9eC-63-Mzi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fyD-RM-jLP" secondAttribute="trailing" constant="16" id="MD0-n8-290"/>
                             <constraint firstItem="8Yl-r4-flu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mz8-B5-TUZ"/>
-                            <constraint firstItem="8xN-vu-MaN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NUl-gX-PxH"/>
                             <constraint firstItem="bgq-Ex-6Ha" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Pb6-gV-hzt"/>
                             <constraint firstItem="bgq-Ex-6Ha" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="S9w-m2-CAn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jrv-lG-l52" secondAttribute="bottom" constant="20" id="XHc-1k-DRw"/>
                             <constraint firstItem="8Yl-r4-flu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xo7-de-Vin"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bgq-Ex-6Ha" secondAttribute="trailing" id="ag0-XY-PpT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jrv-lG-l52" secondAttribute="trailing" constant="16" id="bvv-Rb-hQ9"/>
-                            <constraint firstItem="8xN-vu-MaN" firstAttribute="top" secondItem="8Yl-r4-flu" secondAttribute="bottom" id="gT9-7b-aJo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jrv-lG-l52" secondAttribute="bottom" constant="20" id="fYp-Qx-O7f"/>
+                            <constraint firstItem="8xN-vu-MaN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hqD-tl-Yje"/>
                             <constraint firstItem="8Yl-r4-flu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nry-ZP-lmK"/>
+                            <constraint firstItem="8xN-vu-MaN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qNR-39-OYv"/>
+                            <constraint firstItem="8xN-vu-MaN" firstAttribute="top" secondItem="fyD-RM-jLP" secondAttribute="bottom" constant="20" id="x4l-0d-Cdc"/>
                             <constraint firstItem="8Yl-r4-flu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zOT-6Z-f4F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="ViewFotoğraflar" destination="8xN-vu-MaN" id="7RK-ru-KPS"/>
+                        <outlet property="btnOrtala" destination="8xN-vu-MaN" id="Ptn-hI-v98"/>
+                        <outlet property="btnOrtalaGizli" destination="fyD-RM-jLP" id="zTd-qU-B8T"/>
                         <outlet property="haritaGoruntuleyicisi" destination="8Yl-r4-flu" id="VYs-wd-vBc"/>
                     </connections>
                 </viewController>
