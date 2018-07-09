@@ -218,6 +218,9 @@ extension HaritaVC: MKMapViewDelegate{
     
     @objc func pinBirak(sender:UITapGestureRecognizer){
         sezonlariBitir();
+        resimUrlDizisi=[];
+        resimDizisi=[];
+        koleksiyonGoruntuleyicisi?.reloadData();
         pinleriKalidr();
         fotografViewAnimasyonu();
         lblBeklemeSeviyesiKaldir();
@@ -225,6 +228,7 @@ extension HaritaVC: MKMapViewDelegate{
         bekleticiKaldir();
         bekleticiEkle();
         fotografViewGeriyeAnimasyon();
+        
         let dokunulanNokta=sender.location(in: haritaGoruntuleyicisi);
         let dokunulanKoordinat=haritaGoruntuleyicisi.convert(dokunulanNokta, toCoordinateFrom: haritaGoruntuleyicisi);
         
@@ -287,10 +291,13 @@ extension HaritaVC:UICollectionViewDelegate,UICollectionViewDataSource{
         return 1;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4;
+        return self.resimDizisi.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let hucre=collectionView.dequeueReusableCell(withReuseIdentifier: "fotografHucresi", for: indexPath);
+        guard let hucre=collectionView.dequeueReusableCell(withReuseIdentifier: "fotografHucresi", for: indexPath) as? FotografHucresi else {return UICollectionViewCell();}
+        let indekstenResme=resimDizisi[indexPath.row];
+        let resimGostericisi=UIImageView(image: indekstenResme);
+        hucre.addSubview(resimGostericisi);
         return hucre;
     }
 }
