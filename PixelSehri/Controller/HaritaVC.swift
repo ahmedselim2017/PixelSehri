@@ -92,9 +92,9 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
             Alamofire.request(url).responseImage { (cevap) in
                 
                 if cevap.error != nil {
-                    debugPrint(cevap.error);
+                    debugPrint(url);
                     handler(false);
-                    return;
+                    self.resimDizisi.append(UIImage(named: "closeButton.png")!);
                 }
                 
                 guard let resim=cevap.result.value else{handler(false);return;}
@@ -296,8 +296,20 @@ extension HaritaVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let hucre=collectionView.dequeueReusableCell(withReuseIdentifier: "fotografHucresi", for: indexPath) as? FotografHucresi else {return UICollectionViewCell();}
         let indekstenResme=resimDizisi[indexPath.row];
-        let resimGostericisi=UIImageView(image: indekstenResme);
+        var resimGostericisi=UIImageView(image: indekstenResme);
+        
+        resimGostericisi.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleHeight, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth]
+
+        resimGostericisi.contentMode = UIView.ContentMode.scaleAspectFill
+        resimGostericisi.image = indekstenResme;
+
+        
         hucre.addSubview(resimGostericisi);
         return hucre;
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let popVC=storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else {return;}
+        popVC.initVeri(resim: resimDizisi[indexPath.row]);
+        present(popVC, animated: true, completion: nil);
     }
 }

@@ -101,6 +101,55 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
+        <!--PopVC-->
+        <scene sceneID="vw1-26-i9T">
+            <objects>
+                <viewController storyboardIdentifier="PopVC" id="oZp-po-0jx" customClass="PopVC" customModule="PixelSehri" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jzR-us-QbL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qd4-ez-ssL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ct-QL-ex9">
+                                <rect key="frame" x="87.5" y="622" width="200" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kapatmak İçin Çift Tıkla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxI-JE-q7v">
+                                        <rect key="frame" x="7.5" y="1" width="185" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zxI-JE-q7v" firstAttribute="centerX" secondItem="5ct-QL-ex9" secondAttribute="centerX" id="G19-Cq-CuE"/>
+                                    <constraint firstAttribute="height" constant="25" id="Yzm-uD-RJU"/>
+                                    <constraint firstAttribute="width" constant="200" id="fxL-Xd-1v9"/>
+                                    <constraint firstItem="zxI-JE-q7v" firstAttribute="centerY" secondItem="5ct-QL-ex9" secondAttribute="centerY" id="qOM-y3-mEW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qd4-ez-ssL" firstAttribute="leading" secondItem="FOg-gE-9X8" secondAttribute="leading" id="9tA-Rg-bHw"/>
+                            <constraint firstItem="FOg-gE-9X8" firstAttribute="bottom" secondItem="Qd4-ez-ssL" secondAttribute="bottom" id="OCQ-S9-WIP"/>
+                            <constraint firstItem="5ct-QL-ex9" firstAttribute="centerX" secondItem="jzR-us-QbL" secondAttribute="centerX" id="QSO-6T-3Xd"/>
+                            <constraint firstItem="FOg-gE-9X8" firstAttribute="bottom" secondItem="5ct-QL-ex9" secondAttribute="bottom" constant="20" id="XX7-l0-XIc"/>
+                            <constraint firstItem="FOg-gE-9X8" firstAttribute="trailing" secondItem="Qd4-ez-ssL" secondAttribute="trailing" id="lVe-cI-lMy"/>
+                            <constraint firstItem="Qd4-ez-ssL" firstAttribute="top" secondItem="jzR-us-QbL" secondAttribute="top" id="tEe-rD-Sj3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FOg-gE-9X8"/>
+                    </view>
+                    <connections>
+                        <outlet property="popResim" destination="Qd4-ez-ssL" id="QzD-Vg-jmy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X63-EJ-2Ug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1022" y="142"/>
+        </scene>
     </scenes>
     <resources>
         <image name="locationButton" width="67" height="67"/>
