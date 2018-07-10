@@ -40,6 +40,7 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         haritaGoruntuleyicisi.delegate=self;
         ciftTiklamaEkle();
         
+        
         koleksiyonGoruntuleyicisi=UICollectionView(frame: view.bounds , collectionViewLayout: flowLayout);
         koleksiyonGoruntuleyicisi?.register(FotografHucresi.self, forCellWithReuseIdentifier: "fotografHucresi");
         koleksiyonGoruntuleyicisi?.delegate=self;
@@ -47,7 +48,8 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         koleksiyonGoruntuleyicisi?.backgroundColor=#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1);
         
         ViewFotoğraflar.addSubview(koleksiyonGoruntuleyicisi!);
-        
+        registerForPreviewing(with: self, sourceView: koleksiyonGoruntuleyicisi!);
+
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -311,5 +313,22 @@ extension HaritaVC:UICollectionViewDelegate,UICollectionViewDataSource{
         guard let popVC=storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else {return;}
         popVC.initVeri(resim: resimDizisi[indexPath.row]);
         present(popVC, animated: true, completion: nil);
+    }
+}
+
+extension HaritaVC:UIViewControllerPreviewingDelegate{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indeks=koleksiyonGoruntuleyicisi?.indexPathForItem(at: location), let hucre=koleksiyonGoruntuleyicisi?.cellForItem(at: indeks) else {return nil;}
+        
+        guard let popVC=storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else{return nil;}
+        
+        popVC.initVeri(resim: resimDizisi[indeks.row]);
+        
+        previewingContext.sourceRect=hucre.contentView.frame;
+        
+        return popVC;
+    }
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self);
     }
 }
