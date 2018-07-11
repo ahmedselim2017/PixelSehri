@@ -24,6 +24,14 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
     let yetkiDurumu=CLLocationManager.authorizationStatus();
     let bolgeRadyus:Double=1000;
     
+    
+    var fotografID:String = "";
+    var fotografSecret:String = "";
+    
+    var JSONFotografVeriDizisi=[JSONFotografVeri]();
+    var PrewievFotografVeriDizisi=[PrewievFotografVeri]();
+    
+    
     var koleksiyonGoruntuleyicisi:UICollectionView?;
     var flowLayout=UICollectionViewFlowLayout();
     var ekranBoyutu=UIScreen.main.bounds;
@@ -45,7 +53,7 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
         koleksiyonGoruntuleyicisi?.register(FotografHucresi.self, forCellWithReuseIdentifier: "fotografHucresi");
         koleksiyonGoruntuleyicisi?.delegate=self;
         koleksiyonGoruntuleyicisi?.dataSource=self;
-        koleksiyonGoruntuleyicisi?.backgroundColor=#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1);
+        koleksiyonGoruntuleyicisi?.backgroundColor=#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.75);
         
         ViewFotoğraflar.addSubview(koleksiyonGoruntuleyicisi!);
         registerForPreviewing(with: self, sourceView: koleksiyonGoruntuleyicisi!);
@@ -76,16 +84,48 @@ class HaritaVC: UIViewController ,UIGestureRecognizerDelegate{
             let fotograflarJSON=json["photos"] as! Dictionary<String,AnyObject>;
             let fotograflarJSONDizi=fotograflarJSON["photo"] as! [Dictionary<String,AnyObject>];
             var fotografUrl:String;
+            
             for fotograf in fotograflarJSONDizi{
                 fotografUrl="https://farm\(fotograf["farm"]!).staticflickr.com/\(fotograf["server"]!)/\(fotograf["id"]!)_\(fotograf["secret"]!)_h_d.jpg";
                 self.resimUrlDizisi.append(fotografUrl);
                 fotografUrl="";
+                let jsonFotografVeri=JSONFotografVeri(id: fotograf["id"] as! String, secret: fotograf["secret"] as! String);
+                self.JSONFotografVeriDizisi.append(jsonFotografVeri);
             }
             
             handler(true);
             
         }
     }
+    
+    func resimVerisiniGetir(handler:@escaping (_ durum:Bool)->()){
+        for veri in JSONFotografVeriDizisi{
+            Alamofire.request(flickrResimBilgisiUrl(apiAnahtari: API_Anahtari, fotografId: veri.id , secret: veri.secret )).responseJSON { (cevap) in
+                if cevap.error != nil{
+                    debugPrint("105.Satır Hata");
+                    return;
+                }
+                
+                guard let json=cevap.result.value as? Dictionary<String,AnyObject> else {handler(false);return;}
+                debugPrint(json);
+                let fotografJSON=json["photo"] as! Dictionary<String,AnyObject>;
+                let baslikJSON=fotografJSON["title"] as! Dictionary<String,AnyObject>;
+                let aciklamaJSON=fotografJSON["description"] as! Dictionary<String,AnyObject>;
+                let tarihJSON=fotografJSON["dates"] as! Dictionary<String,AnyObject>;
+
+                let baslik:String=baslikJSON["_content"] as! String;
+                let aciklama:String=aciklamaJSON["_content"] as! String;
+                let tarih:String=tarihJSON["taken"] as! String;
+                
+                let previewFotografVeri=PrewievFotografVeri(fotografBaslik: baslik, fotografAciklama: aciklama, fotografTarih: tarih);
+    
+                self.PrewievFotografVeriDizisi.append(previewFotografVeri);
+            }
+            
+        }
+    }
+    
+    
     
     func resimleriGetir(handler:@escaping(_ durum:Bool)->()){
         resimDizisi=[];
@@ -239,11 +279,15 @@ extension HaritaVC: MKMapViewDelegate{
 
         urlleriGetir(annotation: annotation) { (durum) in
             if durum{
+                self.resimVerisiniGetir(handler: { (durum) in
+                    
+                })
                 self.resimleriGetir(handler: { (durum) in
                     if durum{
                         self.bekleticiKaldir();
                         self.lblBeklemeSeviyesiKaldir();
                         self.koleksiyonGoruntuleyicisi?.reloadData();
+                        
                     }
                 })
             }
@@ -311,7 +355,7 @@ extension HaritaVC:UICollectionViewDelegate,UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let popVC=storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else {return;}
-        popVC.initVeri(resim: resimDizisi[indexPath.row]);
+        popVC.initVeri(resim: resimDizisi[indexPath.row], baslik: PrewievFotografVeriDizisi[indexPath.row].fotografBaslik , aciklama: PrewievFotografVeriDizisi[indexPath.row].fotografAciklama, tarih: PrewievFotografVeriDizisi[indexPath.row].fotografTarih);
         present(popVC, animated: true, completion: nil);
     }
 }
@@ -322,7 +366,7 @@ extension HaritaVC:UIViewControllerPreviewingDelegate{
         
         guard let popVC=storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else{return nil;}
         
-        popVC.initVeri(resim: resimDizisi[indeks.row]);
+        popVC.initVeri(resim: resimDizisi[indeks.row], baslik: "", aciklama: "", tarih: "");
         
         previewingContext.sourceRect=hucre.contentView.frame;
         

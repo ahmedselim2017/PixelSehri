@@ -118,7 +118,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kapatmak İçin Çift Tıkla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxI-JE-q7v">
                                         <rect key="frame" x="7.5" y="1" width="185" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -130,25 +130,70 @@
                                     <constraint firstItem="zxI-JE-q7v" firstAttribute="centerY" secondItem="5ct-QL-ex9" secondAttribute="centerY" id="qOM-y3-mEW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnI-9X-xqA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnM-3L-fcW">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="49.5"/>
+                                        <string key="text">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing E
+Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing E
+sad</string>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="0.90394905821917804" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super Havalı Sandalye" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIO-7y-LAa">
+                                        <rect key="frame" x="0.0" y="15" width="375" height="31"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="0.90394905821917804" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 Nisan 2018 Saat 12.00 " textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-zX-PzK">
+                                        <rect key="frame" x="0.0" y="115.5" width="375" height="17"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="0.90394905821917804" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hIO-7y-LAa" firstAttribute="top" secondItem="jnI-9X-xqA" secondAttribute="top" constant="15" id="C56-jt-fVm"/>
+                                    <constraint firstAttribute="trailing" secondItem="hIO-7y-LAa" secondAttribute="trailing" id="Ct9-e2-Cb7"/>
+                                    <constraint firstItem="JD9-zX-PzK" firstAttribute="top" secondItem="KnM-3L-fcW" secondAttribute="bottom" constant="10" id="M7p-7X-hAL"/>
+                                    <constraint firstItem="JD9-zX-PzK" firstAttribute="leading" secondItem="jnI-9X-xqA" secondAttribute="leading" id="QeP-tO-JUT"/>
+                                    <constraint firstItem="hIO-7y-LAa" firstAttribute="leading" secondItem="jnI-9X-xqA" secondAttribute="leading" id="Y2E-Va-4v2"/>
+                                    <constraint firstAttribute="trailing" secondItem="JD9-zX-PzK" secondAttribute="trailing" id="cJc-a3-7gY"/>
+                                    <constraint firstItem="KnM-3L-fcW" firstAttribute="leading" secondItem="jnI-9X-xqA" secondAttribute="leading" id="fX7-qy-W0w"/>
+                                    <constraint firstAttribute="height" constant="143" id="fen-mE-HlV"/>
+                                    <constraint firstItem="KnM-3L-fcW" firstAttribute="top" secondItem="hIO-7y-LAa" secondAttribute="bottom" constant="10" id="oRB-Su-RHm"/>
+                                    <constraint firstAttribute="trailing" secondItem="KnM-3L-fcW" secondAttribute="trailing" id="xzj-UA-GAs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qd4-ez-ssL" firstAttribute="leading" secondItem="FOg-gE-9X8" secondAttribute="leading" id="9tA-Rg-bHw"/>
+                            <constraint firstItem="jnI-9X-xqA" firstAttribute="top" secondItem="jzR-us-QbL" secondAttribute="top" id="Lve-Z5-vnh"/>
                             <constraint firstItem="FOg-gE-9X8" firstAttribute="bottom" secondItem="Qd4-ez-ssL" secondAttribute="bottom" id="OCQ-S9-WIP"/>
                             <constraint firstItem="5ct-QL-ex9" firstAttribute="centerX" secondItem="jzR-us-QbL" secondAttribute="centerX" id="QSO-6T-3Xd"/>
+                            <constraint firstItem="jnI-9X-xqA" firstAttribute="leading" secondItem="FOg-gE-9X8" secondAttribute="leading" id="ScP-Ex-GrZ"/>
                             <constraint firstItem="FOg-gE-9X8" firstAttribute="bottom" secondItem="5ct-QL-ex9" secondAttribute="bottom" constant="20" id="XX7-l0-XIc"/>
                             <constraint firstItem="FOg-gE-9X8" firstAttribute="trailing" secondItem="Qd4-ez-ssL" secondAttribute="trailing" id="lVe-cI-lMy"/>
                             <constraint firstItem="Qd4-ez-ssL" firstAttribute="top" secondItem="jzR-us-QbL" secondAttribute="top" id="tEe-rD-Sj3"/>
+                            <constraint firstItem="jnI-9X-xqA" firstAttribute="trailing" secondItem="FOg-gE-9X8" secondAttribute="trailing" id="tQz-ib-UqU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FOg-gE-9X8"/>
                     </view>
                     <connections>
+                        <outlet property="lblAciklama" destination="KnM-3L-fcW" id="E30-X4-oIF"/>
+                        <outlet property="lblBaslik" destination="hIO-7y-LAa" id="n1h-da-rhg"/>
+                        <outlet property="lblTarih" destination="JD9-zX-PzK" id="ztZ-xd-3Vb"/>
                         <outlet property="popResim" destination="Qd4-ez-ssL" id="QzD-Vg-jmy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X63-EJ-2Ug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1022" y="142"/>
+            <point key="canvasLocation" x="1021.6" y="141.67916041979012"/>
         </scene>
     </scenes>
     <resources>

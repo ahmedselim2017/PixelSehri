@@ -14,6 +14,7 @@
 		9334871920F00BE600613240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9334871820F00BE600613240 /* Assets.xcassets */; };
 		9334871C20F00BE600613240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9334871A20F00BE600613240 /* LaunchScreen.storyboard */; };
 		936E360720F526DE00D10A3C /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936E360620F526DE00D10A3C /* PopVC.swift */; };
+		936E360920F5818B00D10A3C /* FotografVeri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936E360820F5818B00D10A3C /* FotografVeri.swift */; };
 		93EC6F9920F2B7B50035B2D0 /* HaritaPini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */; };
 		93F147B220F3FC5E0030AA1E /* FotografHucresi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F147B120F3FC5E0030AA1E /* FotografHucresi.swift */; };
 		93F147B420F403240030AA1E /* Sabitler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F147B320F403240030AA1E /* Sabitler.swift */; };
@@ -30,6 +31,7 @@
 		9334871B20F00BE600613240 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9334871D20F00BE600613240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		936E360620F526DE00D10A3C /* PopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
+		936E360820F5818B00D10A3C /* FotografVeri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotografVeri.swift; sourceTree = "<group>"; };
 		93EC6F9820F2B7B50035B2D0 /* HaritaPini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaritaPini.swift; sourceTree = "<group>"; };
 		93F147B120F3FC5E0030AA1E /* FotografHucresi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotografHucresi.swift; sourceTree = "<group>"; };
 		93F147B320F403240030AA1E /* Sabitler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabitler.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		9334872420F00C1C00613240 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				936E360820F5818B00D10A3C /* FotografVeri.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				93EC6F9920F2B7B50035B2D0 /* HaritaPini.swift in Sources */,
 				93F147B420F403240030AA1E /* Sabitler.swift in Sources */,
 				93F147B220F3FC5E0030AA1E /* FotografHucresi.swift in Sources */,
+				936E360920F5818B00D10A3C /* FotografVeri.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
