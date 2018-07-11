@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--HaritaVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HaritaVC" customModule="PixelSehri" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yl-r4-flu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgq-Ex-6Ha">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pinlemek ve Fotoğraflar İçin Çift Tıkla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8U-5z-sn7">
+                                        <rect key="frame" x="50.5" y="24" width="274.5" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="FcN-PN-Db6"/>
+                                            <constraint firstAttribute="width" constant="274.5" id="gFv-Pd-m1Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.65098039215686276" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="3jr-1I-lMq"/>
+                                    <constraint firstItem="h8U-5z-sn7" firstAttribute="centerY" secondItem="bgq-Ex-6Ha" secondAttribute="centerY" id="9rV-my-XDG"/>
+                                    <constraint firstItem="h8U-5z-sn7" firstAttribute="centerX" secondItem="bgq-Ex-6Ha" secondAttribute="centerX" id="kV7-np-bMm"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrv-lG-l52">
+                                <rect key="frame" x="309" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JvG-UQ-Tda"/>
+                                    <constraint firstAttribute="width" constant="50" id="uHi-YQ-RCd"/>
+                                </constraints>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="haritayiOrtalaBasildi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zu-ba-0Ib"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xN-vu-MaN">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="nIk-mq-XhX"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyD-RM-jLP">
+                                <rect key="frame" x="309" y="297" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5CB-EU-wwe"/>
+                                    <constraint firstAttribute="width" constant="50" id="nss-kM-5Ro"/>
+                                </constraints>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="haritayiOrtalaBasildi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SNB-Yg-syD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8xN-vu-MaN" secondAttribute="bottom" id="9eC-63-Mzi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fyD-RM-jLP" secondAttribute="trailing" constant="16" id="MD0-n8-290"/>
+                            <constraint firstItem="8Yl-r4-flu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mz8-B5-TUZ"/>
+                            <constraint firstItem="bgq-Ex-6Ha" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Pb6-gV-hzt"/>
+                            <constraint firstItem="bgq-Ex-6Ha" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="S9w-m2-CAn"/>
+                            <constraint firstItem="8Yl-r4-flu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xo7-de-Vin"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bgq-Ex-6Ha" secondAttribute="trailing" id="ag0-XY-PpT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jrv-lG-l52" secondAttribute="trailing" constant="16" id="bvv-Rb-hQ9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jrv-lG-l52" secondAttribute="bottom" constant="20" id="fYp-Qx-O7f"/>
+                            <constraint firstItem="8xN-vu-MaN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hqD-tl-Yje"/>
+                            <constraint firstItem="8Yl-r4-flu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nry-ZP-lmK"/>
+                            <constraint firstItem="8xN-vu-MaN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qNR-39-OYv"/>
+                            <constraint firstItem="8xN-vu-MaN" firstAttribute="top" secondItem="fyD-RM-jLP" secondAttribute="bottom" constant="20" id="x4l-0d-Cdc"/>
+                            <constraint firstItem="8Yl-r4-flu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zOT-6Z-f4F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="ViewFotoğraflar" destination="8xN-vu-MaN" id="7RK-ru-KPS"/>
+                        <outlet property="btnOrtala" destination="8xN-vu-MaN" id="Ptn-hI-v98"/>
+                        <outlet property="btnOrtalaGizli" destination="fyD-RM-jLP" id="zTd-qU-B8T"/>
+                        <outlet property="haritaGoruntuleyicisi" destination="8Yl-r4-flu" id="VYs-wd-vBc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--PopVC-->
+        <scene sceneID="vw1-26-i9T">
+            <objects>
+                <viewController storyboardIdentifier="PopVC" id="oZp-po-0jx" customClass="PopVC" customModule="PixelSehri" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jzR-us-QbL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qd4-ez-ssL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ct-QL-ex9">
+                                <rect key="frame" x="87.5" y="622" width="200" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kapatmak İçin Çift Tıkla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxI-JE-q7v">
+                                        <rect key="frame" x="7.5" y="1" width="185" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zxI-JE-q7v" firstAttribute="centerX" secondItem="5ct-QL-ex9" secondAttribute="centerX" id="G19-Cq-CuE"/>
+                                    <constraint firstAttribute="height" constant="25" id="Yzm-uD-RJU"/>
+                                    <constraint firstAttribute="width" constant="200" id="fxL-Xd-1v9"/>
+                                    <constraint firstItem="zxI-JE-q7v" firstAttribute="centerY" secondItem="5ct-QL-ex9" secondAttribute="centerY" id="qOM-y3-mEW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qd4-ez-ssL" firstAttribute="leading" secondItem="FOg-gE-9X8" secondAttribute="leading" id="9tA-Rg-bHw"/>
+                            <constraint firstItem="FOg-gE-9X8" firstAttribute="bottom" secondItem="Qd4-ez-ssL" secondAttribute="bottom" id="OCQ-S9-WIP"/>
+                            <constraint firstItem="5ct-QL-ex9" firstAttribute="centerX" secondItem="jzR-us-QbL" secondAttribute="centerX" id="QSO-6T-3Xd"/>
+                            <constraint firstItem="FOg-gE-9X8" firstAttribute="bottom" secondItem="5ct-QL-ex9" secondAttribute="bottom" constant="20" id="XX7-l0-XIc"/>
+                            <constraint firstItem="FOg-gE-9X8" firstAttribute="trailing" secondItem="Qd4-ez-ssL" secondAttribute="trailing" id="lVe-cI-lMy"/>
+                            <constraint firstItem="Qd4-ez-ssL" firstAttribute="top" secondItem="jzR-us-QbL" secondAttribute="top" id="tEe-rD-Sj3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FOg-gE-9X8"/>
+                    </view>
+                    <connections>
+                        <outlet property="popResim" destination="Qd4-ez-ssL" id="QzD-Vg-jmy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X63-EJ-2Ug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1022" y="142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="locationButton" width="67" height="67"/>
+    </resources>
+</document>
